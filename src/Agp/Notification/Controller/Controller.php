@@ -1,6 +1,6 @@
 <?php
 
-namespace Agp\Modelo\Controller;
+namespace Agp\Notification\Controller;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;

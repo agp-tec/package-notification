@@ -1,71 +1,45 @@
-<p align="center"><a href="https://www.agapesolucoes.com.br/" target="_blank"><img src="https://www.agapesolucoes.com.br/media/logos/AGP/logo-blue.svg" width="400"></a></p>
+<p align="center"><img src="https://deploy.agapesolucoes.com.br/media/logos/AGP/logo-blue.svg" width="400"></p>
 
-<br>
-<p align="center">
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
-<br>
+# AGPIX
 
-## Sobre Modelo
+### Introdução
 
-Esse pacote foi criado com o intuito de ajudar a você criar seu próprio package. 
+Pacote para Laravel de funções úteis e classes base.
+Contém
+- NotificationController: Possui os métodos para marcar como lido uma ou todas as notificações.
+- Web: Possui as rotas para marcar como lido uma ou todas as notificações.
+- DataBaseNotification: Possui a sobreescrita da tabela e conexão para notificações.
+- Trait HasDatabaseNotifications.php: Possui, Notifiable.php: Possui a sobreescrita para entidade DataBaseNotification. 
 
-Existem diferentes tipos de pacotes. Alguns pacotes são independentes, o que significa que funcionam com qualquer estrutura PHP. Esses pacotes podem ter rotas, controllers, composers, models, views e configurações especificamente destinadas a aprimorar um aplicativo Laravel.
+### Git do projeto
+[Modelo Laravel](https://git.agapesolucoes.com.br/AGP/package-notification)
 
-<br>
+### Fórum de discução
+[Fórum AGP](https://www.agapesolucoes.com.br/forum)
 
-## Como criar o seu Package
+### Instalação
 
-Se você é desenvolvedor e sente a necessidade de criar um novo package é necessário que primeiramente o gestor de projetos crie um repositório com o modelo vazio onde você pode começar do zero.
+Verifique as dependencias desse pacote.
 
-O modelo vazio vem com uma estrutura similar a que você está vendo aqui em baixo.
+Variáveis de ambiente:
+- ``NOTIFICATION_TABLE``: Tabela que contém as notificações (log_notifications).
+- ``NOTIFICATION_CONNECTION``: Nome da conexão para a tabela de notificação.
 
+Execute no projeto que deseja instalar o pacote:
 
 ```bash
-    agp
-    └── nome_pacote
-        ├── src
-        │    └── Agp
-        │       └── NomePacote
-        │           ├── Controller
-        │           ├── Form
-        │           ├── Model
-        │           ├── Routes
-        │           ├── Views
-        │           └── Agp <NomePacote> ServiceProvider.php
-        │
-        ├── composer.json
-        └── README.md
+composer require agp/notification
 ```
 
-Para que ele funcione em seu projeto de desenvolvimento precisamos dizer ao ```composer.json``` para carregar automaticamente nossos arquivos, adicione este código ao seu ```composer.json```:
-            
-```bash         
-          "autoload": {
-               "psr-4": {
-                   "agp\\nome_pacote\\": "src/"
-               }
-           }
+```bash
+php artisan vendor:publish --provider=Agp\Notification\AgpNotificationServiceProvider
 ```
 
-Ou em seu proprio composer.json do pacote adicione: 
-
-```bash 
-        "extra": {
-            "laravel": {
-                "providers": [
-                    "Agp\\NomePacote\\Agp <NomePacote> ServiceProvider"
-                ]
-            }
-        }
+```bash
+php artisan config:cache
 ```
 
-E pronto, agora só depende de você. Seja criativo! 😉
+### Copyright
 
-<br>
-<br>
+AGP @ 2020
 
-> por __Richard Pereira Cardoso__.
-
-#### Referências do Pacote Modelo:
-[publish-laravel-packagist](https://pusher.com/tutorials/publish-laravel-packagist)  - Último acesso em 25/09/2020 as 06:46.
