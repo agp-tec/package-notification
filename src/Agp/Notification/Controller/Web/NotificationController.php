@@ -10,16 +10,14 @@
 namespace Agp\Notification\Controller\Web;
 
 
-use Agp\BaseUtils\Model\Entity\DatabaseNotification;
 use Agp\Notification\Controller\Controller;
+use Agp\Notification\Model\Entity\DatabaseNotification;
 
 
 class NotificationController extends Controller
 {
     public function markReaded(DatabaseNotification $notification)
     {
-        dump($notification);
-        dump(auth());
         if ($notification->notifiable_id == auth()->user()->getKey())
             $notification->markAsRead();
         return response()->json();
@@ -27,6 +25,7 @@ class NotificationController extends Controller
 
     public function readAll()
     {
-
+        auth()->user()->unreadNotifications()->update(['read_at' => now()]);
+        return response()->json();
     }
 }
