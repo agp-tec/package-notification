@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Entity;
+namespace Agp\Notification\Model\Entity;
 
 use Agp\Notification\Traits\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,6 +16,13 @@ class Usuario extends Authenticatable implements JWTSubject
     protected $table = 'log_pessoa';
     protected $primaryKey = 'adm_pessoa_id';
     protected $fillable = [];
+
+    public function __constructor(array $attributes = [])
+    {
+        $this->setConnection(config('notification.notification_connection'));
+
+        parent::__construct($attributes);
+    }
 
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.

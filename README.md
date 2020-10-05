@@ -12,7 +12,7 @@ Contém
 - Trait HasDatabaseNotifications.php: Possui, Notifiable.php: Possui a sobreescrita para entidade DataBaseNotification. 
 
 ### Git do projeto
-[Modelo Laravel](https://git.agapesolucoes.com.br/AGP/package-notification)
+[package-notification](https://git.agapesolucoes.com.br/AGP/package-notification)
 
 ### Fórum de discução
 [Fórum AGP](https://www.agapesolucoes.com.br/forum)
