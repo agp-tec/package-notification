@@ -10,20 +10,19 @@
 namespace Agp\Notification\Controller\Web;
 
 
+use Agp\BaseUtils\Model\Entity\DatabaseNotification;
 use Agp\Notification\Controller\Controller;
-use Agp\Notification\Form\CidadeForm;
-use Agp\Notification\Model\Entity\Cidade;
-use Facades\Agp\Notification\Model\Repository\CidadeRepository;
-use Facades\Agp\Notification\Model\Service\CidadeService;
-use Illuminate\Http\Request;
-use Kris\LaravelFormBuilder\Facades\FormBuilder;
 
 
 class NotificationController extends Controller
 {
-    public function markReaded($notification)
+    public function markReaded(DatabaseNotification $notification)
     {
-
+        dump($notification);
+        dump(auth());
+        if ($notification->notifiable_id == auth()->user()->getKey())
+            $notification->markAsRead();
+        return response()->json();
     }
 
     public function readAll()
